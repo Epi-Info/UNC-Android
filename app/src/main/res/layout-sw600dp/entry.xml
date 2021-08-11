@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/MainLayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    >
+    <View
+        android:layout_width="10dp"
+        android:layout_height="100dp"/>
+    <ImageView
+        android:src="@drawable/epi_banner_pb"
+        android:adjustViewBounds="true" android:layout_gravity="center" android:layout_marginBottom="40dp"
+        android:contentDescription="Epi Info home screen"  android:layout_marginTop="10dp"
+        android:layout_height="0dp" android:layout_width="480dp" android:layout_weight="0.5"/>
+    <Button
+        android:id="@+id/btnMapView"
+        android:contentDescription="Click here to collect data"
+        android:layout_height="99dp" android:layout_width="345dp" android:layout_margin="15dp"
+        android:background="@drawable/btn_data_collection_land"
+        />
+    <View
+        android:layout_width="10dp"
+        android:layout_height="100dp"/>
+</LinearLayout>

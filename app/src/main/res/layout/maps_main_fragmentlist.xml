@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+ <RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MapsMainActivity" >
+    
+	<LinearLayout
+ 			android:id="@+id/fragmentlist_layout1_id"
+ 			android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+
+		<com.google.android.gms.maps.MapView
+          android:id="@+id/map_fragment2_id"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"/>
+ 	</LinearLayout>
+    
+	
+	
+	<RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+        	android:layout_alignParentBottom="true"
+        	
+        	>
+ 		
+	    <RelativeLayout
+        	android:id="@+id/button_panel_id"
+        	android:layout_width="120dp" 
+        	android:layout_height="214dp"
+        	android:orientation="vertical"
+        	android:layout_below="@id/map_fragment2_id"
+        	android:layout_alignParentBottom="true"
+        	android:layout_alignParentRight="true"
+        	
+        	android:background="@color/black3"
+			>
+            
+        	<!-- See styles.xml for the definition of style/ActionButton, which defines common attributes -->
+
+        	<Button android:id="@+id/begininterview_button_id" style="@style/ActionButton"
+            	android:layout_below="@id/map_fragment2_id"
+            	android:layout_alignParentBottom="true"
+            	android:layout_alignParentRight="true"
+            	android:layout_marginLeft="2dp"
+            	android:layout_marginRight="-4dp"
+            	android:background="@color/unc_button_normal"
+            	android:text="@string/begininterview_button_label"
+            	android:textColor="@color/black3"
+            	android:textSize="16dp"
+            	android:textStyle="bold"
+				android:layout_width="120dp"
+            	android:layout_height="49dp"
+            	android:layout_weight="1"
+            	android:layout_marginTop="-6dp"/>
+        	
+        	<View
+    			android:id="@+id/button4_line_id"
+    			android:layout_above="@id/begininterview_button_id"
+    			android:layout_height="9dp"
+    			android:layout_width="120dp"
+    			android:background="@color/black3"
+    			/>
+        
+        	<Button android:id="@+id/maptype_button_id" style="@style/ActionButton"
+            	android:layout_above="@id/button4_line_id"
+            	android:layout_alignParentRight="true"
+            	android:layout_marginLeft="2dp"
+            	android:layout_marginRight="-4dp"
+            	android:background="@color/unc_button_normal"
+            	android:text="@string/maptype_button_label"
+            	android:textSize="16dp"
+            	android:textColor="@color/black3"
+            	android:textStyle="bold"
+				android:layout_width="120dp"
+            	android:layout_height="49dp"
+            	android:layout_weight="1"
+            	android:layout_marginTop="-6dp"/>
+        	
+        	<View
+    			android:id="@+id/button3_line_id"
+    			android:layout_above="@id/maptype_button_id"
+    			android:layout_height="9dp"
+    			android:layout_width="120dp"
+    			android:background="@color/black3"
+    			/>
+        	
+        	<Button android:id="@+id/points_button_id" style="@style/ActionButton"
+            	android:layout_above="@id/button3_line_id"
+            	android:layout_alignParentRight="true"
+            	android:layout_marginLeft="2dp"
+            	android:layout_marginRight="-4dp"
+            	android:background="@color/unc_button_normal"
+            	android:text="@string/points_button_label"
+            	android:textSize="16dp"
+            	android:textColor="@color/black3"
+            	android:textStyle="bold"
+				android:layout_width="120dp"
+            	android:layout_height="49dp"
+            	android:layout_weight="1"
+            	android:layout_marginTop="-6dp"/>
+        
+        	<View
+    			android:id="@+id/button2_line_id"
+    			android:layout_above="@id/points_button_id"
+    			android:layout_height="9dp"
+    			android:layout_width="120dp"
+    			android:background="@color/black3"
+    			/>
+        	
+        	<Button android:id="@+id/clusters_button_id" style="@style/ActionButton"
+            	android:layout_above="@id/button2_line_id"
+            	android:layout_alignParentRight="true"
+            	android:layout_marginLeft="2dp"
+            	android:layout_marginRight="-4dp"
+            	android:background="@color/unc_button_selected"
+            	android:text="@string/clusters_button_label"
+            	android:textColor="@color/yellow"
+            	android:textSize="16dp"
+            	android:textStyle="bold"
+				android:layout_width="120dp"
+            	android:layout_height="49dp"
+            	android:layout_weight="1"
+            	android:layout_marginTop="-6dp"/>
+
+    	</RelativeLayout>
+    	
+   
+	    <RelativeLayout
+            android:id="@+id/listviewlayout_id"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="214dp"
+            android:layout_weight="0.1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/button_panel_id"
+            android:background="@color/black3"
+            >
+           
+	        <TextView android:id="@+id/listview_header_id"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/black3"
+              android:layout_toLeftOf="@id/clusters_button_id"
+              
+              android:layout_marginTop="2dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_centerHorizontal="true"
+              android:gravity="center"
+              android:textSize="20dp"
+              android:textColor="@color/yellow"
+              android:text="Clusters"
+              />
+	        
+	        <View
+    			android:id="@+id/listview_line_id"
+    			android:layout_height="2dp"
+    			android:layout_width="wrap_content"
+    			android:background="@color/white"
+    			android:layout_below="@id/listview_header_id"
+    			android:layout_toLeftOf="@id/clusters_button_id"/>
+	        
+            <ListView
+               	android:id="@+id/android:list"
+               	android:layout_width="wrap_content"
+               	android:layout_height="185dp"
+               	android:layout_alignParentBottom="true"
+               	android:layout_alignParentLeft="true"
+               	android:layout_toLeftOf="@id/begininterview_button_id"
+               	android:layout_below="@id/listview_line_id"
+               	
+               	android:divider="@color/white"
+               	android:dividerHeight="1dp"
+                
+               	android:scrollbarStyle="insideOverlay"
+               	android:scrollbarAlwaysDrawVerticalTrack="true"
+               	android:scrollHorizontally="true"
+               	
+               	/>
+		</RelativeLayout>
+	
+	</RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- This file contains resource definitions for solid colors.  In
+     addition to plain color resources (retrieved via Resources.getColor()
+     and friends), we are also using it to define drawables that are
+     a solid color. -->
+
+<resources>
+    <!-- Retrieved via Resources.getColor() and friends -->
+    <color name="red">#f00</color>
+	<color name="blue">#0000ff</color>
+    <color name="green">#f0f0</color>
+    <color name="sfmta_green">#007d00</color>
+    <color name="sfmta_green2">#59be09</color>
+    <color name="black">#80000000</color>
+    <color name="black2">#00000000</color>
+    <color name="black3">#000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="yellow">#ffffff00</color>
+    <color name="yellow2">#ffff00ff</color>
+    <color name="darkgray">#404040ff</color>
+    <color name="sfmta_red_test">#ff0863</color>
+    <color name="sfmta_red">#8e0e11</color>
+    <color name="sfmta_red_v116">#de0853</color>
+    <color name="sfmta_red1">#d50000</color>
+    <color name="sfmta_gray">#666666</color>
+    
+    <color name="sfmta_button_normal_red">#cd0541</color>
+    <!--<color name="sfmta_button_selected_red">#e83a63</color>-->
+    <color name="sfmta_button_selected_red">#b71c1c</color>
+    <color name="sfmta_button_normal">#54703B</color>
+    <color name="sfmta_button_selected">#648D3D</color>
+    
+    <color name="unc_button_selected">#00B8F5</color>
+    <!--
+    // <color name="unc_button_selected">#70DBFF</color>
+    -->
+	<!--
+    <color name="unc_button_normal">#003DF5</color>
+    -->
+	<color name="unc_button_normal">#6699CC</color>
+	
+    <color name="button_text_gray">#af8c92</color>
+    <color name="muni_green">#648D3D</color>
+    <color name="muni_green2">#3E9447</color>
+    
+    <color name="mbta_green">#348625</color>
+	<color name="mbta_green2">#59be09</color>
+
+	<drawable name="solid_red">#f00</drawable>
+	<drawable name="solid_blue">#0000ff</drawable>
+	<drawable name="solid_green">#f0f0</drawable>
+	<drawable name="sfmta_green">#348625</drawable>
+	<drawable name="sfmta_green2">#59be09</drawable>
+	<drawable name="sfmta_red_test">#ff0863</drawable>
+	<drawable name="sfmta_red">#de0853</drawable>
+	<drawable name="sfmta_red1">#d50000</drawable>
+	<drawable name="sfmta_red2">#f00</drawable>
+	<drawable name="solid_white">#ffffffff</drawable>
+	<drawable name="sfmta_gray">#666666</drawable>
+	<drawable name="muni_green">#648D3D</drawable>
+
+    <!-- Retrieved via Resources.getDrawable() and friends -->
+    <drawable name="semi_black">#80000000</drawable>
+    <drawable name="semi_green">#0000f0f0</drawable>
+</resources>

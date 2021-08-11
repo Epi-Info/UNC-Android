@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+	
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="match_parent"
+    android:background="@color/unc_button_normal"
+    android:orientation="vertical">
+    
+	<ImageView android:id="@+id/epi_image_id"
+        	   android:contentDescription="@string/content_description"
+               android:src="@drawable/epi_banner"
+               android:adjustViewBounds="true"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentTop="true"
+               android:gravity="top"
+               android:orientation="vertical">
+    </ImageView>
+	
+	<LinearLayout
+	    android:id="@+id/survey_button_panel_id"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/epi_image_id"
+	    android:layout_marginTop="40dp"
+	    android:layout_weight="1"
+	    android:gravity="center"
+	    android:orientation="horizontal" >
+	        
+	        <TextView android:id="@+id/download_survey_textview_id"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/black3"
+              android:layout_marginTop="40dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_centerHorizontal="true"
+              android:gravity="center"
+              android:textSize="40dp"
+              android:textColor="@color/yellow"
+              android:text="Downloading Survey Files ..."
+              />  
+
+    </LinearLayout>
+ 
+ </RelativeLayout>
