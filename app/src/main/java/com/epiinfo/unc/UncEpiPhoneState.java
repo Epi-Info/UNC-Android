@@ -6,6 +6,7 @@ import android.telephony.CellLocation;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
+import android.telephony.CellInfo;
 import android.util.Log;
 
 /**
@@ -35,7 +36,8 @@ public class UncEpiPhoneState {
 	public static String deviceId;
 	public static String deviceSoftwareVersion;
 	public static String line1Number;  // MSISDN for GSM
-	public static List<NeighboringCellInfo> neighboringCellInfo;
+	//public static List<NeighboringCellInfo> neighboringCellInfo;
+	public static List<CellInfo> cellInfo;
 	public static String networkCountryIso;  // MCC - Mobile Country Code
 	public static String networkOperator;  // MCC + MNC of registered operator
 	public static String networkOperatorName;  //alphabetic name of current registered operator
@@ -70,7 +72,8 @@ public class UncEpiPhoneState {
 		deviceId = telMgr.getDeviceId();
 		deviceSoftwareVersion = telMgr.getDeviceSoftwareVersion();
 		line1Number = telMgr.getLine1Number();
-		neighboringCellInfo = telMgr.getNeighboringCellInfo();
+		// neighboringCellInfo = telMgr.getNeighboringCellInfo(); deprecated, replaced below
+		cellInfo = telMgr.getAllCellInfo();
 		networkCountryIso = telMgr.getNetworkCountryIso();
 		networkOperator = telMgr.getNetworkOperator();
 		networkOperatorName = telMgr.getNetworkOperatorName();
@@ -104,7 +107,8 @@ public class UncEpiPhoneState {
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " deviceId = " + deviceId);
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " deviceSoftwareVersion = " + deviceSoftwareVersion);
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " line1Number = " + line1Number);
-			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " neighboringCellInfo = " + neighboringCellInfo);
+			// Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " neighboringCellInfo = " + neighboringCellInfo);
+			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " cellInfo = " + cellInfo);
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " networkCountryIso = " + networkCountryIso);
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " networkOperator = " + networkOperator);
 			Log.d(Constants.LOGTAG, " " + UncEpiPhoneState.CLASSTAG + " networkOperatorName = " + networkOperatorName);

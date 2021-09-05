@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-sw600dp-tvdpi/maps_main_fragmentlist.xml" value="0.154296875" />
+        <entry key="app/src/main/res/layout-sw600dp-xhdpi/maps_main_fragmentlist.xml" value="0.154296875" />
         <entry key="app/src/main/res/layout-sw600dp/admin_password_dialog.xml" value="0.3857421875" />
-        <entry key="app/src/main/res/layout-sw600dp/line_list.xml" value="0.67" />
+        <entry key="app/src/main/res/layout-sw600dp/line_list.xml" value="0.575801749271137" />
         <entry key="app/src/main/res/layout-sw600dp/statcalc_poisson.xml" value="0.3857421875" />
+        <entry key="app/src/main/res/layout-sw720dp/line_list.xml" value="0.154296875" />
         <entry key="app/src/main/res/layout/analysis_two_by_two.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/entry.xml" value="0.20572916666666666" />
         <entry key="app/src/main/res/layout/faq_activity.xml" value="0.20572916666666666" />
+        <entry key="app/src/main/res/layout/line_list.xml" value="0.20572916666666666" />
         <entry key="app/src/main/res/layout/maps_main_fragmentlist.xml" value="0.15443840579710144" />
+        <entry key="app/src/main/res/layout/statcalc_two_by_two.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>

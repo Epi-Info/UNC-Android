@@ -6,11 +6,11 @@
 	android:layout_height="fill_parent"
 	android:gravity="right"
 	>
-	<ListView android:id="@+id/android:list"
+	<ListView android:id="@android:id/list"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
 		android:gravity="right"/>
-	<TextView android:id="@+id/android:empty"
+	<TextView android:id="@android:id/empty"
 		android:layout_width="fill_parent"
 		android:layout_height="?android:attr/listPreferredItemHeight"
 		android:textAppearance="?android:attr/textAppearanceLarge"

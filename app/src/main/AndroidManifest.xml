@@ -104,8 +104,11 @@
                   android:screenOrientation="landscape" 
                   android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".MapViewer" android:label="Map Viewer"/>
+        <!-- missing activity, not sure what it's about...
         <activity android:name=".CameraPreview" android:label="Camera" android:screenOrientation="portrait"/>
-        
+        -->
+
+
         <!-- #UNC EPI Info additions -->
         <activity android:name="com.epiinfo.unc.LoginUserActivity"
                   android:label="Map View - Login User"

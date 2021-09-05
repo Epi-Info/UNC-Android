@@ -28,8 +28,12 @@
 		android:layout_marginBottom="4dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1">       
-        <ListView android:id="@+id/android:list"
+        android:layout_weight="0.1">
+        <!-- switching from
+            android:id="@+id/android:list"
+            to below
+         -->
+        <ListView android:id="@+id/list_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
