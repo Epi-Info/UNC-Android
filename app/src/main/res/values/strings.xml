@@ -305,5 +305,8 @@
     
     <string name="current_location_speech">Your current location is %s</string>
     <string name="using_default_unc_office_addr">You are outside of Map range, using UNC office at %s as your current location</string>
+
+    <string name="request_location">Location Permission</string>
+    <string name="request_location_desc">This app needs access to your location</string>
     
 </resources>

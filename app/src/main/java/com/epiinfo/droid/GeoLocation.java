@@ -1,9 +1,12 @@
 package com.epiinfo.droid;
 
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -22,7 +25,7 @@ import com.google.maps.android.data.kml.KmlPolygon;
 import java.util.Calendar;
 import java.util.List;
 
-public class GeoLocation  implements ConnectionCallbacks, OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+public class GeoLocation implements ConnectionCallbacks, OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 	private static Location CurrentLocation;
 	private static String CurrentGeography;

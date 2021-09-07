@@ -7,12 +7,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -33,12 +41,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.InputStream;
+import java.util.Map;
+
+import android.Manifest;
 
 // #UNC EPI Imports
 
 
 public class MainActivity extends AppCompatActivity {
-	
+
+	private static final String[] NEEDED_PERMISSIONS = {Manifest.permission.READ_PHONE_STATE,
+			Manifest.permission.ACCESS_FINE_LOCATION,
+			Manifest.permission.ACCESS_COARSE_LOCATION};
+
 	private Button btnCollectData;
 	private Button btnStatcalc;
 	private Button btnAnalyze;
@@ -47,11 +62,15 @@ public class MainActivity extends AppCompatActivity {
 	// #UNC - End
 	private MainActivity self;
 	private EpiDbHelper mDbHelper;
+
+	private ActivityResultCallback resultCallback;
 	
 	private void LoadActivity(Class c)
 	{
 		startActivity(new Intent(this, c));
 	}
+
+
 	
 	private void LoadActivity(String component, String activity)
 	{
@@ -86,10 +105,35 @@ public class MainActivity extends AppCompatActivity {
     	***********************/
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplication().getApplicationContext());
 		UncEpiSettings.readSettings(preferences);
-		UncEpiPhoneState.GetCurrentPhoneState((TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE));
+		// TODO add UX to explain why permissions are requested
+		boolean hasPermissions = true;
+		for (String perm : NEEDED_PERMISSIONS) {
+			if (ContextCompat.checkSelfPermission(this, perm) != PackageManager.PERMISSION_GRANTED) {
+				hasPermissions = false;
+				break;
+			}
+		}
+		if (hasPermissions) {
+			UncEpiPhoneState.GetCurrentPhoneState((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
+		} else {
+			ActivityResultLauncher<String[]> callback = this.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(),
+					new ActivityResultCallback<Map<String, Boolean>>() {
+						@Override
+						public void onActivityResult(Map<String, Boolean> result) {
+							for (boolean b : result.values()) {
+								if (!b) {
+									// TODO handle error
+									return;
+								}
+							}
+							UncEpiPhoneState.GetCurrentPhoneState((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
+						}
+					});
+			callback.launch(NEEDED_PERMISSIONS);
+		}
 		DisplayMetrics dm = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(dm); 
-		UncEpiSettings.screenWidth  = dm.widthPixels;
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		UncEpiSettings.screenWidth = dm.widthPixels;
 		UncEpiSettings.screenHeight = dm.heightPixels;
 		
 		/*btnCollectData = (Button)findViewById(R.id.btnCollectData);
@@ -443,5 +487,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 	*******************************************************************************************/
+
+
 // #UNC - End
 }

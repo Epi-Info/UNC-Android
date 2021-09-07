@@ -1,11 +1,13 @@
 package com.epiinfo.droid;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -15,7 +17,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -52,6 +61,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 {
@@ -78,6 +88,7 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 	private int requestCode;
 	private String fkeyGuid;
 	private EpiDbHelper db;
+	private ActivityResultLauncher latLongFieldLauncher;
 
 
 	private void CreateFields(ViewGroup layout, Rule_Context pContext, boolean useAbsolutePos) {
@@ -139,10 +150,37 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 	}
 
 
+	private void setLatLongFields() {
+		latField.setText(GeoLocation.GetCurrentLocation().getLatitude() + "");
+		longField.setText(GeoLocation.GetCurrentLocation().getLongitude() + "");
+	}
+
+	private void trySetLatLongField() {
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+				ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+			this.setLatLongFields();
+		} else {
+			latLongFieldLauncher.launch(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION});
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		latLongFieldLauncher = this.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(),
+				new ActivityResultCallback<Map<String, Boolean>>() {
+					@Override
+					public void onActivityResult(Map<String, Boolean> result) {
+						for (boolean b : result.values()) {
+							if (!b) {
+								// TODO handle error
+								return;
+							}
+						}
+						RecordEditor.this.setLatLongFields();
+					}
+				});
 
 		UncEpiSettings.pointQuestionnaireSaved = false;
 
@@ -759,6 +797,8 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 			@Override
 			public void onClick(View v) {
 
+				
+
 				int latFieldId = Integer.parseInt(latSpinner.getSelectedItem().toString().split(":")[0]);
 				int longFieldId = Integer.parseInt(longSpinner.getSelectedItem().toString().split(":")[0]);
 
@@ -767,8 +807,7 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 
 				try
 				{
-					latField.setText(GeoLocation.GetCurrentLocation().getLatitude() + "");
-					longField.setText(GeoLocation.GetCurrentLocation().getLongitude() + "");
+					RecordEditor.this.trySetLatLongField();
 				}
 				catch (Exception ex)
 				{
@@ -1507,13 +1546,12 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 	@Override
 	public void CaptureCoordinates(String latFieldName, String longFieldName)
 	{
-		EditText latitudeField = (EditText)this.layoutManager.GetView(latFieldName);
-		EditText longitudeField = (EditText)this.layoutManager.GetView(longFieldName);
+		latField = (EditText)this.layoutManager.GetView(latFieldName);
+		longField = (EditText)this.layoutManager.GetView(longFieldName);
 
 		try
 		{
-			latitudeField.setText(GeoLocation.GetCurrentLocation().getLatitude() + "");
-			longitudeField.setText(GeoLocation.GetCurrentLocation().getLongitude() + "");
+			this.trySetLatLongField();
 		}
 		catch (Exception ex)
 		{
