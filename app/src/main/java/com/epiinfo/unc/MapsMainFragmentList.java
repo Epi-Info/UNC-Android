@@ -16,7 +16,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
-import android.support.v4.app.ListFragment;
+import androidx.fragment.app.ListFragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MapsMainActivity" >
+    tools:context="com.epiinfo.unc.MapsMainActivity" >
     
 	<LinearLayout
  			android:id="@+id/fragmentlist_layout1_id"
@@ -161,17 +161,17 @@
               android:textColor="@color/yellow"
               android:text="Clusters"
               />
-	        
-	        <View
-    			android:id="@+id/listview_line_id"
-    			android:layout_height="2dp"
-    			android:layout_width="wrap_content"
-    			android:background="@color/white"
-    			android:layout_below="@id/listview_header_id"
-    			android:layout_toLeftOf="@id/clusters_button_id"/>
+
+			<View
+				android:id="@+id/listview_line_id"
+				android:layout_width="wrap_content"
+				android:layout_height="2dp"
+				android:layout_below="@id/listview_header_id"
+				android:layout_toLeftOf="@id/clusters_button_id"
+				android:background="@color/white" />
 	        
             <ListView
-               	android:id="@+id/android:list"
+               	android:id="@android:id/list"
                	android:layout_width="wrap_content"
                	android:layout_height="185dp"
                	android:layout_alignParentBottom="true"
